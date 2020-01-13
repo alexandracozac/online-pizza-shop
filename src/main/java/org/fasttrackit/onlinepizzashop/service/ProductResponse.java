@@ -1,9 +1,11 @@
-package org.fasttrackit.onlinepizzashop.transfer;
+package org.fasttrackit.onlinepizzashop.service;
 
 import javax.validation.constraints.NotNull;
 
-public class SaveProductRequest {
+public class ProductResponse {
 
+
+    private long id;
     @NotNull
     private String description;
     @NotNull
@@ -13,6 +15,14 @@ public class SaveProductRequest {
     @NotNull
     private Integer quantity;
     private String imageUrl;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getDescription() {
         return description;
@@ -56,8 +66,9 @@ public class SaveProductRequest {
 
     @Override
     public String toString() {
-        return "SaveProductRequest{" +
-                "description='" + description + '\'' +
+        return "ProductResponse{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
