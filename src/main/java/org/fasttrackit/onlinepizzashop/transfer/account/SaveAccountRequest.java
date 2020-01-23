@@ -1,16 +1,8 @@
-package org.fasttrackit.onlinepizzashop.domain;
+package org.fasttrackit.onlinepizzashop.transfer.account;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Account {
-
-    @Id
-    @GeneratedValue
-    private long id;
+public class SaveAccountRequest {
 
     @NotNull
     private String name;
@@ -20,14 +12,6 @@ public class Account {
     private String password;
     @NotNull
     private String email;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -61,12 +45,10 @@ public class Account {
         this.email = email;
     }
 
-
     @Override
     public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "SaveAccountRequest{" +
+                "name='" + name + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +

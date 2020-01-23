@@ -1,8 +1,6 @@
 package org.fasttrackit.onlinepizzashop.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -12,7 +10,7 @@ public class Order {
     @Id
     @GeneratedValue
     private Long id;
-    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
     @NotNull
     private int orderNum;
@@ -24,6 +22,9 @@ public class Order {
     private String customerAddress;
     @NotNull
     private String customerPhoneNum;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Product product;
 
     public Long getId() {
         return id;

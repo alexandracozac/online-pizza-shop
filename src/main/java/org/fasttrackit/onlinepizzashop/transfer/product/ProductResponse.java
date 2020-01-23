@@ -1,19 +1,11 @@
-package org.fasttrackit.onlinepizzashop.domain;
+package org.fasttrackit.onlinepizzashop.transfer.product;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
-@Entity
-public class Product {
+public class ProductResponse {
 
-    @Id
-    @GeneratedValue
+
     private long id;
     @NotNull
     private String description;
@@ -24,17 +16,6 @@ public class Product {
     @NotNull
     private Integer quantity;
     private String imageUrl;
-
-    @ManyToMany(mappedBy = "products") //name of property in cart where we defined the relationship
-    private Set<Cart> carts = new HashSet<>();
-
-    public Set<Cart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(Set<Cart> carts) {
-        this.carts = carts;
-    }
 
     public long getId() {
         return id;
@@ -84,10 +65,9 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-
     @Override
     public String toString() {
-        return "Product{" +
+        return "ProductResponse{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
@@ -101,12 +81,18 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id == product.id;
+        ProductResponse that = (ProductResponse) o;
+        return id == that.id &&
+                quantity == that.quantity &&
+                Double.compare(that.price, price) == 0 &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(imageUrl, that.imageUrl);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name, quantity, price, description, imageUrl);
     }
 }

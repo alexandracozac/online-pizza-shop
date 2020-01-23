@@ -1,25 +1,19 @@
-package org.fasttrackit.onlinepizzashop.transfer;
+package org.fasttrackit.onlinepizzashop.transfer.product;
 
-import javax.validation.constraints.NotNull;
+public class ProductInCartResponse {
 
-public class SaveProductRequest {
-
-    @NotNull
-    private String description;
-    @NotNull
+    private Long id;
     private String name;
-    @NotNull
     private Double price;
-    @NotNull
     private Integer quantity;
-    private String imageUrl;
 
-    public String getDescription() {
-        return description;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,22 +40,28 @@ public class SaveProductRequest {
         this.quantity = quantity;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     @Override
     public String toString() {
-        return "SaveProductRequest{" +
-                "description='" + description + '\'' +
+        return "ProductInCartResponse{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
-                ", imageUrl='" + imageUrl + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductInCartResponse that = (ProductInCartResponse) o;
+
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

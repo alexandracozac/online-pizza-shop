@@ -1,20 +1,20 @@
-package org.fasttrackit.onlinepizzashop.transfer;
+package org.fasttrackit.onlinepizzashop.transfer.cart;
 
 import javax.validation.constraints.NotNull;
 
 public class AddProductToCartRequest {
 
     @NotNull
-    private Long cartId;
+    private Long customerId;
     @NotNull
     private Long productId;
 
-    public Long getCartId() {
-        return cartId;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCartId(Long cartId) {
-        this.cartId = cartId;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public Long getProductId() {
@@ -25,10 +25,11 @@ public class AddProductToCartRequest {
         this.productId = productId;
     }
 
+
     @Override
     public String toString() {
         return "AddProductToCartRequest{" +
-                "cartId=" + cartId +
+                "customerId=" + customerId +
                 ", productId=" + productId +
                 '}';
     }

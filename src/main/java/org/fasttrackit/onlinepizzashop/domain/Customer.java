@@ -12,9 +12,9 @@ public class Customer {
     @Id
     @GeneratedValue
     private Long id;
-    @NotBlank
+    @NotNull
     private String firstName;
-    @NotBlank
+    @NotNull
     private String lastName;
     @NotNull
     private String phoneNumber;
