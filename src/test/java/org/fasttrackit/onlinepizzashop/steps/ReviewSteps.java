@@ -23,13 +23,13 @@ public class ReviewSteps {
         SaveReviewRequest request = new SaveReviewRequest();
         request.setContent("Good pizza!");
 
-        Review review = reviewService.createReview(request);
+        Review createdReview = reviewService.createReview(request);
 
-        assertThat(review, notNullValue());
-        assertThat(review.getId(), greaterThan(0L));
-        assertThat(review.getContent(), is(review.getContent()));
+        assertThat(createdReview, notNullValue());
+        assertThat(createdReview.getId(), greaterThan(0L));
+        assertThat(createdReview.getContent(), is(createdReview.getContent()));
 
-        return review;
+        return createdReview;
 
 
 

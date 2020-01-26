@@ -27,17 +27,17 @@ public class ProductSteps {
         request.setPrice(12.0);
         request.setQuantity(50);
 
-        Product product = productService.createProduct(request);
+        Product createdProduct = productService.createProduct(request);
 
-        assertThat(product, notNullValue());
-        assertThat(product.getId(), notNullValue());
-        assertThat(product.getId(), greaterThan(0L));
-        assertThat(product.getName(), is(request.getName()));
-        assertThat(product.getPrice(), is(request.getPrice()));
-        assertThat(product.getQuantity(), is(request.getQuantity()));
-        assertThat(product.getDescription(), is(request.getDescription()));
+        assertThat(createdProduct, notNullValue());
+        assertThat(createdProduct.getId(), notNullValue());
+        assertThat(createdProduct.getId(), greaterThan(0L));
+        assertThat(createdProduct.getName(), is(request.getName()));
+        assertThat(createdProduct.getPrice(), is(request.getPrice()));
+        assertThat(createdProduct.getQuantity(), is(request.getQuantity()));
+        assertThat(createdProduct.getDescription(), is(request.getDescription()));
 
-        return product;
+        return createdProduct;
 
 
 

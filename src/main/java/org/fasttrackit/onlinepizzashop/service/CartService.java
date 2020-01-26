@@ -14,8 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -42,6 +43,7 @@ public class CartService {
     }
 
 
+
     @Transactional
     public void addProductToCart(AddProductToCartRequest request) {
         LOGGER.info("Adding product to cart {}", request);
@@ -65,7 +67,7 @@ public class CartService {
 
     }
 
-    @Transactional
+    @Transactional(noRollbackFor = ResourceNotFoundException.class)
     public CartResponse getCart(long customerId) {
         Cart cart = cartRepository.findById(customerId).
                 orElseThrow(() -> new ResourceNotFoundException("There is no cart for customer." + customerId));

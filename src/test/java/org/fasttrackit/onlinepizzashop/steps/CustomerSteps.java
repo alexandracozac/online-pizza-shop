@@ -24,15 +24,15 @@ public class CustomerSteps {
         request.setFirstName("Pop ");
         request.setLastName("Maria");
 
-        Customer customer = customerService.createCustomer(request);
+        Customer createdCustomer = customerService.createCustomer(request);
 
-        assertThat(customer, notNullValue());
-        assertThat(customer.getId(), notNullValue());
-        assertThat(customer.getId(), greaterThan(0L));
-        assertThat(customer.getFirstName(), is(request.getFirstName()));
-        assertThat(customer.getLastName(), is(request.getLastName()));
+        assertThat(createdCustomer, notNullValue());
+        assertThat(createdCustomer.getId(), notNullValue());
+        assertThat(createdCustomer.getId(), greaterThan(0L));
+        assertThat(createdCustomer.getFirstName(), is(request.getFirstName()));
+        assertThat(createdCustomer.getLastName(), is(request.getLastName()));
 
-        return customer;
+        return createdCustomer;
 
     }
 }
